@@ -1,0 +1,28 @@
+﻿@using MvcSiteMapProvider
+@using iSynaptic.Commons
+@using iSynaptic.Commons.Collections.Generic;
+@using iSynaptic.Commons.Linq
+
+<ul class="nav nav-list">
+    @{
+        var nodePath = SiteMap.CurrentNode.Recurse(x => x.ParentNode).ToArray();
+
+        var groupedSidebarNodes = nodePath
+           .Reverse()
+           .Skip(1)
+           .TryFirst()
+           .Select(x => x.ChildNodes.OfType<MvcSiteMapNode>())
+           .Squash()
+           .GroupBy(x => x.MetaAttributes.TryGetValue("category").ValueOrDefault("")); 
+    }
+    
+    @foreach (var sidebarNodeGroup in groupedSidebarNodes)
+    {
+        <li class="nav-header">@sidebarNodeGroup.Key</li>        
+        foreach (var sidebarNode in sidebarNodeGroup)
+        {
+            Boolean isActive = nodePath.Contains(sidebarNode);
+            <li class="@(isActive ? "active" : "")"><a href="@sidebarNode.Url">@sidebarNode.Title</a></li>
+        }
+    }
+</ul>

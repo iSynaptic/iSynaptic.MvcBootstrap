@@ -115,7 +115,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_TopNavbar.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Mvc.sitemap" />
@@ -123,6 +123,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\_Breadcrumb.cshtml" />
+    <Content Include="Views\Shared\_StandardSidebar.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

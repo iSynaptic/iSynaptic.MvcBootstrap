@@ -1,0 +1,21 @@
+﻿@using iSynaptic.Commons.Linq
+@using iSynaptic.MvcBootstrap
+
+<div id="header">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="~/">@Global.ApplicationName</a>
+                <ul class="nav">
+                    @foreach (SiteMapNode node in @SiteMap.RootNode.ChildNodes)
+                    {
+                        Boolean isActiveItem = SiteMap.CurrentNode.Recurse(x => x.ParentNode).Contains(node);
+                        <li class="@(isActiveItem ? "active" : "")">
+                            <a href="@node.Url">@node.Title</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

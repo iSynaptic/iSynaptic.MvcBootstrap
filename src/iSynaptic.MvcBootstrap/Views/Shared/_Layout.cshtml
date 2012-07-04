@@ -8,21 +8,27 @@
     @RenderSection("Head", false)
 </head>
     <body>
-        @Html.Partial("_TopNavbar")
-        <div class="container-fluid">
-            @{Boolean showSidebar = IsSectionDefined("Sidebar") && (SiteMap.CurrentNode != SiteMap.RootNode); }
+        @Html.Partial("_Header")
+        <div id="root-container" class="container-fluid">
+            @{ Boolean showSidebar = SiteMap.CurrentNode != SiteMap.RootNode; }
             <div class="row-fluid">
                 @if (showSidebar) {
-                    <div class="span2">
-                        @RenderSection("Sidebar")
+                    <div id="sidebar" class="span2">
+                        @if (IsSectionDefined("Sidebar")) {
+                            @RenderSection("Sidebar")
+                        } else {
+                            @Html.Partial("_StandardSidebar")
+                        }
                     </div>
                 }
-                <div class="@(showSidebar ? "span10" : "span12")">
+                <div id="content" class="@(showSidebar ? "span10" : "span12")">
                     @Html.Partial("_Breadcrumb")
                     @RenderBody()  
                 </div>
             </div>
         </div>
+        
+        @Html.Partial("_Footer")
     
         <script src="~/Content/js/bootstrap.min.js"></script>
         <script src="~/Content/js/global.js"></script>

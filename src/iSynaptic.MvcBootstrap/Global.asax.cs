@@ -20,16 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using iSynaptic.Commons;
+using iSynaptic.Commons.Linq;
+using iSynaptic.Commons.Reflection;
 
 namespace iSynaptic.MvcBootstrap
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-    public class MvcApplication : HttpApplication
+    public class Global : HttpApplication
     {
+        public const String ApplicationName = "MVC Bootstrap";
+        public static readonly String Version = "0.0.0.0";
+
+        static Global()
+        {
+            Version = typeof (Global).Assembly
+                .GetAttributesOfType<AssemblyFileVersionAttribute>()
+                .TryFirst()
+                .Select(x => x.Version)
+                .ValueOrDefault("0.0.0.0");
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

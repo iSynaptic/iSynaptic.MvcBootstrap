@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="iSynaptic.MvcBootstrap.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="iSynaptic.MvcBootstrap.Global" Language="C#" %>

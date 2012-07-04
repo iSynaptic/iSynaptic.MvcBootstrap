@@ -1,5 +1,41 @@
 ﻿@import url("bootstrap.min.css");
 
-body {
+html, body, #root-container {
+    height: 100%;
+}
+
+body > #root-container {
+    height: auto;
+    min-height: 100%;
+}
+
+#root-container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+#sidebar {
     padding-top: 60px;
+    padding-bottom: 35px;
+}
+
+#content {
+    padding-top: 60px;
+    padding-bottom: 35px;
+}
+
+#footer {
+    clear: both;
+    zoom: 1;
+    position: relative;
+    margin-top: -35px;
+    height: 14px;
+    padding: 10px 15px;
+    font-size: 11px;
+    line-height: 14px;
+    color: #999;
+    background-color: #eee;
+    border-top: solid 1px #ddd;
+    text-shadow: 0 1px 0 white;                
 }

@@ -2,13 +2,13 @@
 @if (SiteMap.CurrentNode != SiteMap.RootNode)
 {
     <ul class="breadcrumb">
-        @{ var pathNodes = SiteMap.CurrentNode.Recurse(x => x.ParentNode).Skip(1); }
+        @{ var pathNodes = SiteMap.CurrentNode.Recurse(x => x.ParentNode).Skip(1).Reverse(); }
         @foreach (var pathNode in pathNodes)
         {
             <li>
                 <a href="@pathNode.Url">@pathNode.Title</a> <span class="divider">/</span>
             </li>
         }
-        <li class="active">@SiteMap.CurrentNode.Title</li>
+        <li class="active"><strong>@SiteMap.CurrentNode.Title</strong></li>
     </ul>
 }
