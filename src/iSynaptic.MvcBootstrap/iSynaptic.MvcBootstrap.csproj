@@ -122,6 +122,7 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\_Breadcrumb.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

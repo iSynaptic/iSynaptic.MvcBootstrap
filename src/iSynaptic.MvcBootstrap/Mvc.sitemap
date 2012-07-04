@@ -3,6 +3,6 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Home" controller="Home" action="Index" />
+  <mvcSiteMapNode title="MVC Bootstrap" controller="Home" action="Index" />
 
 </mvcSiteMap>

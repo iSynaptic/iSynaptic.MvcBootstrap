@@ -4,19 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/Content/css/global.css" rel="stylesheet" type="text/css" />
-    <title>@ViewBag.Title</title>
+    <title>@(ViewBag.Title ?? SiteMap.CurrentNode.Title)</title>
     @RenderSection("Head", false)
 </head>
     <body>
         @Html.Partial("_TopNavbar")
         <div class="container-fluid">
+            @{Boolean showSidebar = IsSectionDefined("Sidebar") && (SiteMap.CurrentNode != SiteMap.RootNode); }
             <div class="row-fluid">
-                @if (IsSectionDefined("Sidebar")) {
+                @if (showSidebar) {
                     <div class="span2">
                         @RenderSection("Sidebar")
                     </div>
                 }
-                <div class="@(IsSectionDefined("Sidebar") ? "span10" : "span12")">
+                <div class="@(showSidebar ? "span10" : "span12")">
+                    @Html.Partial("_Breadcrumb")
                     @RenderBody()  
                 </div>
             </div>

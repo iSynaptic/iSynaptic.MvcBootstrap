@@ -1,0 +1,14 @@
+﻿@using iSynaptic.Commons.Linq
+@if (SiteMap.CurrentNode != SiteMap.RootNode)
+{
+    <ul class="breadcrumb">
+        @{ var pathNodes = SiteMap.CurrentNode.Recurse(x => x.ParentNode).Skip(1); }
+        @foreach (var pathNode in pathNodes)
+        {
+            <li>
+                <a href="@pathNode.Url">@pathNode.Title</a> <span class="divider">/</span>
+            </li>
+        }
+        <li class="active">@SiteMap.CurrentNode.Title</li>
+    </ul>
+}

@@ -1,13 +1,8 @@
-﻿@using iSynaptic.MvcBootstrap
-
-<div class="navbar navbar-fixed-top">
+﻿<div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <a class="brand" href="@SiteMap.RootNode.Url">MVC Bootstrap</a>
+            <a class="brand" href="@SiteMap.RootNode.Url">@SiteMap.RootNode.Title</a>
             <ul class="nav">
-                <li class="@(SiteMap.RootNode == SiteMap.CurrentNode ? "active" : "")">
-                    <a href="@SiteMap.RootNode.Url">@SiteMap.RootNode.Title</a>
-                </li>
                 @foreach (SiteMapNode node in @SiteMap.RootNode.ChildNodes)
                 {
                     Boolean isActiveItem = node == SiteMap.CurrentNode;
