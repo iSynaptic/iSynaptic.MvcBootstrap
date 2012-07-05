@@ -1,0 +1,17 @@
+﻿@using iSynaptic.MvcBootstrap.Models;
+@model SignInFormModel
+
+@{ var signInFormModel = Model ?? new SignInFormModel(); }
+
+<form id="@signInFormModel.FormId" method="POST" accept-charset="UTF-8">
+    <label for="@signInFormModel.IdControlName">@signInFormModel.IdLabel</label>
+    <input name="@signInFormModel.IdControlName" type="text" value="@signInFormModel.Id" />
+
+    <label for="@signInFormModel.PasswordControlName">@signInFormModel.PasswordLabel</label>
+    <input name="@signInFormModel.PasswordControlName" type="password" value="@signInFormModel.Password" />
+
+    <label for="@signInFormModel.RememberMeControlName">@signInFormModel.RememberMeLabel</label>
+    <input name="@signInFormModel.RememberMeControlName" type="checkbox" checked="@signInFormModel.RememberMe"></input>
+    
+    <input name="submit" type="submit" value="@signInFormModel.SubmitButtonLabel" class="btn btn-primary" />
+</form>
